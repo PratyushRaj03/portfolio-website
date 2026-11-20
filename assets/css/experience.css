@@ -1,0 +1,169 @@
+/* EXPERIENCE & TIMELINE STYLE */
+
+#experience {
+  padding: 100px 0;
+  position: relative;
+}
+
+.experience-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* Timeline central line */
+.experience-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 1px;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.08) 10%, 
+    rgba(255, 255, 255, 0.08) 90%, 
+    transparent 100%
+  );
+}
+
+/* Timeline Node Block */
+.timeline-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 60px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline Bullet / Icon wrapper */
+.timeline-dot {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-medium);
+  color: var(--text-secondary);
+}
+
+.timeline-item:hover .timeline-dot {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px rgba(232, 160, 32, 0.18);
+  color: var(--text-primary);
+}
+
+.timeline-dot svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* Timeline Card Content */
+.timeline-content {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  transition: border-color var(--transition-medium);
+  position: relative;
+}
+
+.timeline-content:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.timeline-year {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent-primary);
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(232, 160, 32, 0.06);
+  border: 1px solid rgba(232, 160, 32, 0.15);
+}
+
+.timeline-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.timeline-org {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.timeline-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* Timeline Badge Indicators */
+.timeline-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.timeline-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+}
+
+.timeline-item:hover .timeline-badge {
+  color: var(--text-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .experience-timeline::before {
+    left: 15px;
+  }
+  .timeline-dot {
+    left: 0;
+    width: 30px;
+    height: 30px;
+  }
+  .timeline-item {
+    padding-left: 45px;
+  }
+  .timeline-content {
+    padding: 20px;
+  }
+}

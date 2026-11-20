@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pratyush Raj Srivastava | AI & Machine Learning Engineer</title>
+  <meta name="description"
+    content="Professional portfolio of Pratyush Raj Srivastava, AI & Machine Learning Engineer specializing in Computer Vision, Full Stack, and Backend Systems.">
+
+  <!-- Modern Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/projects.css">
+  <link rel="stylesheet" href="assets/css/skills.css">
+  <link rel="stylesheet" href="assets/css/experience.css">
+  <link rel="stylesheet" href="assets/css/contact.css">
+
+  <!-- Instant Loading Screen Styles to prevent FOUC -->
+  <style>
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: #0e0e0c;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader-ring {
+      width: 60px;
+      height: 60px;
+      border: 2px solid rgba(255, 245, 220, 0.06);
+      border-top-color: #e8a020;
+      border-radius: 50%;
+      animation: spin 1.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+      box-shadow: 0 0 20px rgba(232, 160, 32, 0.12);
+    }
+
+    .loader-text {
+      margin-top: 24px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(245, 240, 232, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Loading Screen Overlay -->
+  <div id="loading-screen">
+    <div class="loader-ring"></div>
+    <div class="loader-text">Just a moment...</div>
+  </div>
+
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-ring"></div>
+
+  <!-- Ambient Cinematic Grids & Glows -->
+  <div class="grid-background"></div>
+  <div class="grid-radial-fade"></div>
+  <div id="canvas-container"></div>
+
+  <!-- Floating Ambient Glow Orbs -->
+  <div class="glow-orb glow-orb-purple" style="top: 10%; left: 5%;"></div>
+  <div class="glow-orb glow-orb-blue" style="top: 40%; right: -10%;"></div>
+  <div class="glow-orb glow-orb-cyan" style="bottom: 10%; left: 15%;"></div>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo" aria-label="Home">
+        <span></span>
+        PRATYUSH RAJ SRIVASTAVA
+      </a>
+      <nav class="nav-links">
+        <a href="#hero">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal-left">
+          <div class="hero-tag">
+            <span></span> Open to internships &amp; opportunities
+          </div>
+          <h1 class="hero-title">
+            Building things that are<br><span class="colored">actually useful</span>
+          </h1>
+          <div class="typing-container">
+            <span class="typing-text"></span>
+          </div>
+          <p class="hero-description">
+            Hey, I'm Pratyush — a CS student at K.R. Mangalam University studying AI &amp; ML. I enjoy working on
+            things that blend machine learning, computer vision, and web development. I'm always looking for
+            ways to build stuff that actually solves real problems.
+          </p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Get in touch</a>
+            <a href="#projects" class="btn btn-secondary">See my work</a>
+          </div>
+        </div>
+
+        <!-- 3D Parallax Profile Artwork -->
+        <div class="profile-art-container reveal-right">
+          <div class="ambient-ring ring-1"></div>
+          <div class="ambient-ring ring-2"></div>
+
+          <div class="profile-art-wrapper">
+            <div class="profile-art-card">
+              <div class="profile-art-grid"></div>
+              <div class="profile-art-glow"></div>
+
+              <!-- Custom Abstract Cyber Avatar -->
+              <div class="profile-avatar-img">
+                <img src="assets/images/1730058357156.jpg" alt="Pratyush Raj Srivastava"
+                  style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+              </div>
+            </div>
+
+            <!-- Layered Depth Tags -->
+            <div class="glass-tag tag-ai">AI / ML</div>
+            <div class="glass-tag tag-cv">Computer Vision</div>
+            <div class="glass-tag tag-web">Full Stack</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Work</span>
+          <h2 class="section-title">Things I've Built</h2>
+          <p class="section-desc">Production-grade applications combining deep learning, computer vision, geospatial intelligence, and modern web architectures.</p>
+        </div>
+        <div id="projects-container" class="projects-grid">
+          <!-- Hydrated Dynamically by assets/js/main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES / SKILLS SECTION -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Skills</span>
+          <h2 class="section-title">What I work with</h2>
+          <p class="section-desc">Technologies and tools I've picked up along the way — from deep learning frameworks to
+            web stacks.</p>
+        </div>
+        <div id="skills-container" class="skills-grid">
+          <!-- Hydrated Dynamically by assets/js/main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE / TIMELINE SECTION -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Experience</span>
+          <h2 class="section-title">Where I've been</h2>
+          <p class="section-desc">Education, internships, and the projects that shaped how I think about building
+            software.</p>
+        </div>
+        <div class="experience-timeline" id="timeline-container">
+          <!-- Hydrated Dynamically by assets/js/main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Contact</span>
+          <h2 class="section-title">Let's talk</h2>
+          <p class="section-desc">Have a project idea, an opportunity, or just want to chat? Drop me a message and I'll
+            get back to you.</p>
+        </div>
+
+        <div class="contact-card-wrapper reveal">
+          <div class="contact-card spotlight-card border-glow-card tilt-card" data-max-tilt="3" data-scale="1.00">
+            <div class="contact-info">
+              <div class="contact-info-header">
+                <h3>Reach out</h3>
+                <p>Feel free to reach out through the form or directly via email. I usually reply within a day or two.
+                </p>
+              </div>
+
+              <ul class="contact-details-list">
+                <li class="contact-detail-item">
+                  <div class="contact-detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <div class="contact-detail-info">
+                    <span class="contact-detail-label">Email</span>
+                    <span class="contact-detail-value">pratyush.sceem@gmail.com</span>
+                  </div>
+                </li>
+                <li class="contact-detail-item">
+                  <div class="contact-detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div class="contact-detail-info">
+                    <span class="contact-detail-label">Location</span>
+                    <span class="contact-detail-value">India</span>
+                  </div>
+                </li>
+              </ul>
+
+              <!-- Socials links -->
+              <div class="socials-row">
+                <a href="https://github.com/PratyushRaj03/" target="_blank" rel="noopener noreferrer" class="social-btn"
+                  aria-label="GitHub">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                  </svg>
+                </a>
+                <a href="https://linkedin.com/in/pratyush-raj-srivastava-b4730a290/" target="_blank"
+                  rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name" class="form-label">Your name</label>
+                <input type="text" id="name" required placeholder="John Doe" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Your email</label>
+                <input type="email" id="email" required placeholder="john@example.com" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" required placeholder="Hey Pratyush, I wanted to..."
+                  class="form-input"></textarea>
+              </div>
+
+              <div class="form-status" id="form-status"></div>
+              <button type="submit" class="btn btn-primary btn-glow">Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Pratyush Raj Srivastava</p>
+      <p>AI/ML &amp; Computer Vision • Building intelligent systems that solve real-world problems.</p>
+    </div>
+  </footer>
+
+  <!-- Modular Orchestration JS Bootstrapper -->
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+
+</html>

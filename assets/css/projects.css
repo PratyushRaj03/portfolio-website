@@ -1,0 +1,859 @@
+/* PROJECTS SECTION STYLE */
+
+#projects {
+  padding: 100px 0;
+  position: relative;
+}
+
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* Individual Project Card layout */
+.project-card-wrapper {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.project-card-wrapper:nth-child(even) {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.project-card-wrapper:nth-child(even) .project-preview-container {
+  order: 2;
+}
+
+@media (max-width: 1024px) {
+  .project-card-wrapper, .project-card-wrapper:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .project-card-wrapper:nth-child(even) .project-preview-container {
+    order: unset;
+  }
+}
+
+/* Glassmorphic Project Preview Frame */
+.project-preview-container {
+  width: 100%;
+  height: 340px;
+  border-radius: 20px;
+  background: rgba(10, 10, 10, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-lg);
+  transition: border-color var(--transition-medium);
+}
+
+.project-preview-container:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Custom Vector Visualizers for Project Previews */
+.vector-visualizer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Project: Outlet Intelligence & Navigation Visualizer */
+.visualizer-outlet-nav {
+  background: radial-gradient(circle at 60% 30%, rgba(232, 160, 32, 0.12), rgba(14, 14, 12, 0.95) 75%);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.map-routes-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.active-gps-line {
+  filter: drop-shadow(0 0 6px rgba(232, 160, 32, 0.6));
+}
+
+.active-gps-pulse {
+  animation: gpsFlow 1.8s linear infinite;
+}
+
+@keyframes gpsFlow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pin-user {
+  width: 24px;
+  height: 24px;
+}
+
+.user-pulse {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(232, 160, 32, 0.25);
+  animation: radarPulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.user-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary);
+  z-index: 2;
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.pin-dest {
+  z-index: 3;
+}
+
+.target-radar {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--accent-primary);
+  border-radius: 50%;
+  animation: radarPulse 1.8s ease-out infinite;
+}
+
+.pin-badge {
+  background: var(--accent-primary);
+  color: #0e0e0c;
+  font-family: monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(232, 160, 32, 0.4);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+
+.pin-cluster {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
+}
+
+.pin-cluster:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.pin-gold {
+  background: rgba(232, 160, 32, 0.2);
+  border: 1.5px solid #e8a020;
+  color: #e8a020;
+}
+
+.pin-cyan {
+  background: rgba(14, 165, 233, 0.2);
+  border: 1.5px solid #0ea5e9;
+  color: #38bdf8;
+}
+
+.pin-purple {
+  background: rgba(168, 85, 247, 0.2);
+  border: 1.5px solid #a855f7;
+  color: #c084fc;
+}
+
+.pin-emerald {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1.5px solid #22c55e;
+  color: #4ade80;
+}
+
+.pin-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.75;
+}
+
+.nav-hud-card {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  right: 14px;
+  background: rgba(18, 18, 15, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  z-index: 4;
+}
+
+.nav-hud-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.nav-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+  animation: blinkLive 1.5s ease-in-out infinite;
+}
+
+@keyframes blinkLive {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.nav-hud-title {
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  flex-grow: 1;
+}
+
+.nav-tag-live {
+  font-family: monospace;
+  font-size: 0.6rem;
+  background: rgba(232, 160, 32, 0.15);
+  color: var(--accent-primary);
+  border: 1px solid rgba(232, 160, 32, 0.3);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.nav-hud-body {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-turn-icon {
+  font-size: 1.1rem;
+  color: var(--accent-primary);
+  line-height: 1;
+  background: rgba(232, 160, 32, 0.1);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid rgba(232, 160, 32, 0.2);
+}
+
+.nav-hud-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.nav-instruction {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-hud-metrics {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.nav-hud-metrics strong {
+  color: var(--text-primary);
+}
+
+.nav-metric-divider {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-status {
+  color: #22c55e;
+  font-weight: 500;
+}
+
+/* Project: Bottle Detection & Classification Visualizer */
+.visualizer-bottle-detection {
+  background: radial-gradient(circle at center, rgba(232, 160, 32, 0.08), rgba(12, 12, 10, 0.96) 80%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.detection-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(232, 160, 32, 0.8), transparent);
+  box-shadow: 0 0 10px rgba(232, 160, 32, 0.7);
+  animation: cvScan 3s ease-in-out infinite;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@keyframes cvScan {
+  0% { top: 5%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 92%; opacity: 0; }
+}
+
+.detection-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.cv-reticle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+.reticle-tl { top: 12px; left: 12px; border-top: 2px solid; border-left: 2px solid; }
+.reticle-tr { top: 12px; right: 12px; border-top: 2px solid; border-right: 2px solid; }
+.reticle-bl { bottom: 12px; left: 12px; border-bottom: 2px solid; border-left: 2px solid; }
+.reticle-br { bottom: 12px; right: 12px; border-bottom: 2px solid; border-right: 2px solid; }
+
+.detection-scene {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+.bottle-entity {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottle-shape {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+}
+
+.bottle-glass {
+  width: 46px;
+  height: 130px;
+  border-radius: 12px 12px 6px 6px;
+}
+
+.bottle-plastic {
+  width: 48px;
+  height: 110px;
+  border-radius: 8px;
+}
+
+.bottle-can {
+  width: 44px;
+  height: 85px;
+  border-radius: 6px;
+}
+
+.bbox {
+  position: absolute;
+  inset: -8px;
+  border: 1.5px solid;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.bbox-label {
+  position: absolute;
+  top: -19px;
+  left: -1.5px;
+  font-family: monospace;
+  font-size: 0.62rem;
+  padding: 2px 6px;
+  border-radius: 2px 2px 0 0;
+  display: flex;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.label-class {
+  font-weight: 700;
+}
+
+.bbox-coords {
+  position: absolute;
+  bottom: -16px;
+  right: -1.5px;
+  font-family: monospace;
+  font-size: 0.55rem;
+  color: var(--text-muted);
+}
+
+.bbox-gold {
+  border-color: var(--accent-primary);
+  background: rgba(232, 160, 32, 0.05);
+}
+
+.bbox-gold .bbox-label {
+  background: var(--accent-primary);
+  color: #0e0e0c;
+}
+
+.bbox-cyan {
+  border-color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.05);
+}
+
+.bbox-cyan .bbox-label {
+  background: #0ea5e9;
+  color: #0e0e0c;
+}
+
+.bbox-purple {
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.05);
+}
+
+.bbox-purple .bbox-label {
+  background: #a855f7;
+  color: #0e0e0c;
+}
+
+.cv-telemetry-bar {
+  background: rgba(18, 18, 15, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  z-index: 4;
+}
+
+.cv-key {
+  color: var(--accent-primary);
+}
+
+/* Project 1: Candle Charts */
+.visualizer-trading {
+  background: radial-gradient(circle at top, rgba(232, 160, 32, 0.08), transparent 70%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.trading-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.trading-candles {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 160px;
+  width: 100%;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+.candle {
+  width: 12px;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgb(34, 197, 94);
+  position: relative;
+  border-radius: 2px;
+}
+
+.candle.red {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgb(239, 68, 68);
+}
+
+.candle::before, .candle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  background: inherit;
+  transform: translateX(-50%);
+}
+
+.candle::before {
+  bottom: 100%;
+  height: 15px;
+}
+
+.candle::after {
+  top: 100%;
+  height: 15px;
+}
+
+/* Project 2: Fridge Detection Bounding Boxes */
+.visualizer-fridge {
+  background: radial-gradient(circle at bottom, rgba(232, 160, 32, 0.08), transparent 70%);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.fridge-item {
+  border: 1px dashed rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.fridge-box {
+  position: absolute;
+  border: 1.5px solid var(--accent-primary);
+  background: rgba(232, 160, 32, 0.05);
+  border-radius: 4px;
+}
+
+.fridge-box-label {
+  position: absolute;
+  top: -18px;
+  left: -1px;
+  background: var(--accent-primary);
+  color: #0e0e0c;
+  font-family: monospace;
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 2px 2px 0 0;
+  white-space: nowrap;
+}
+
+/* Project 3: Route Optimizer Grid Nodes */
+.visualizer-warehouse {
+  background: radial-gradient(circle at center, rgba(232, 160, 32, 0.06), transparent 70%);
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.grid-node {
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+  position: relative;
+}
+
+.grid-node.active-route {
+  background: rgba(232, 160, 32, 0.05);
+  border-color: rgba(232, 160, 32, 0.18);
+}
+
+.route-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Project 4: Chat Screens */
+.visualizer-chat {
+  background: radial-gradient(circle at top, rgba(232, 160, 32, 0.06), transparent 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.chat-bubble-mock {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 12px 18px;
+  border-radius: 16px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  max-width: 180px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.chat-bubble-mock.sender {
+  background: rgba(232, 160, 32, 0.08);
+  border-color: rgba(232, 160, 32, 0.2);
+  align-self: flex-start;
+  transform: translateY(-20px);
+}
+
+.chat-bubble-mock.receiver {
+  align-self: flex-end;
+  transform: translateY(20px);
+}
+
+/* Project 5: NGO UI Mockup */
+.visualizer-ngo {
+  background: radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05), transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.ngo-dashboard-mock {
+  width: 90%;
+  height: 80%;
+  background: rgba(15, 15, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ngo-top-bar {
+  display: flex;
+  gap: 6px;
+}
+
+.ngo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ngo-grid-content {
+  display: grid;
+  grid-template-columns: 0.35fr 0.65fr;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.ngo-left-panel {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+}
+
+.ngo-right-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+.ngo-line {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  width: 80%;
+}
+
+.ngo-line.short {
+  width: 50%;
+}
+
+/* Project Details Area */
+.project-details {
+  z-index: 2;
+}
+
+.project-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.project-subtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-bottom: 20px;
+  font-family: var(--font-body);
+  letter-spacing: 0.02em;
+}
+
+.project-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+}
+
+/* Project Features Bullet List */
+.project-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.project-feature-bullet {
+  color: var(--accent-primary);
+  font-size: 0.72rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Engineering Focus & Pipeline Workflow Callout Box */
+.project-callout-box {
+  background: rgba(232, 160, 32, 0.04);
+  border: 1px solid rgba(232, 160, 32, 0.16);
+  border-left: 3px solid var(--accent-primary);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.project-callout-title {
+  font-weight: 700;
+  color: var(--accent-primary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-callout-title svg {
+  color: var(--accent-primary);
+}
+
+/* Technology Badges */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.tech-badge {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  font-family: monospace;
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: var(--transition-fast);
+}
+
+.tech-badge:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Project Actions */
+.project-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.project-actions a svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}

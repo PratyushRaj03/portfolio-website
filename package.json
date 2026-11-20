@@ -1,0 +1,21 @@
+{
+  "name": "premium-portfolio",
+  "version": "1.0.0",
+  "description": "A flagship visual portfolio for an AI/ML and Full-Stack Engineer.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=8080 --no-browser"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "keywords": [
+    "portfolio",
+    "ai",
+    "machine-learning",
+    "full-stack",
+    "javascript"
+  ],
+  "author": "AI Engineer",
+  "license": "MIT"
+}
