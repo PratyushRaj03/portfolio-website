@@ -14,9 +14,28 @@ export const projectsData = [
     calloutTitle: "Engineering Focus",
     calloutText: "Combines large-scale geospatial data visualization with real-time navigation directly on top of the live outlet intelligence map without separate screens.",
     tech: ["HTML", "CSS", "JavaScript", "Geospatial APIs", "Routing APIs", "Geolocation API"],
-    github: "https://github.com/PratyushRaj03",
-    demo: "https://github.com/PratyushRaj03",
+    github: "https://github.com/PratyushRaj03/navigation-system",
+    demo: "https://github.com/PratyushRaj03/navigation-system",
     image: "assets/images/outlet_nav_preview.svg"
+  },
+  {
+    id: "project-expense-tracker",
+    title: "Full-Stack Expense Tracker & Analytics",
+    subtitle: "Firebase Auth, Cloud Firestore & Financial Visualizations",
+    description: "A modern, full-stack financial management web application with secure authentication, real-time Firestore database synchronization, dynamic Chart.js analytics, custom budget thresholds, and multi-currency PDF/CSV data exports.",
+    features: [
+      "User authentication, session persistence & password recovery via Firebase Auth",
+      "Full real-time CRUD expense tracking with instant Firestore database sync",
+      "Interactive category spending donut and monthly expenditure trend charts",
+      "Monthly budget goal tracking with intelligent visual warning thresholds (80%, 100%+)",
+      "Multi-currency support (USD, INR, EUR, GBP, JPY) & one-click CSV and formatted PDF exports"
+    ],
+    calloutTitle: "Architecture Focus",
+    calloutText: "Serverless web application engineered with modular vanilla JavaScript (ES6+), Firestore user data isolation, and real-time reactive charting.",
+    tech: ["JavaScript (ES6+)", "Firebase Auth", "Cloud Firestore", "Chart.js", "HTML5/CSS3", "jsPDF", "Firebase Hosting"],
+    github: "https://github.com/PratyushRaj03/expense-tracker-fullstack",
+    demo: "https://expense-tracker-app-fb8cc.web.app/",
+    image: "assets/images/expense_tracker_preview.svg"
   },
   {
     id: "project-bottle-detection",

@@ -148,6 +148,68 @@ function renderProjects() {
           </div>
         </div>
       `;
+    } else if (project.id === 'project-expense-tracker') {
+      visualizerContent = `
+        <div class="vector-visualizer visualizer-expense-tracker">
+          <div class="expense-grid-overlay"></div>
+          <div class="expense-hud-top">
+            <div class="expense-live-chip">
+              <span class="pulse-dot-green"></span>
+              <span>FIRESTORE LIVE</span>
+            </div>
+            <div class="expense-balance-box">
+              <span class="balance-label">TOTAL BALANCE</span>
+              <span class="balance-amount">$4,850.00</span>
+            </div>
+            <div class="expense-currency-tag">USD / INR / EUR</div>
+          </div>
+          <div class="expense-chart-area">
+            <svg class="expense-donut-svg" viewBox="0 0 160 160">
+              <circle cx="80" cy="80" r="54" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="14"/>
+              <circle cx="80" cy="80" r="54" fill="none" stroke="var(--accent-primary)" stroke-width="14" stroke-dasharray="110 340" stroke-dashoffset="0"/>
+              <circle cx="80" cy="80" r="54" fill="none" stroke="#38bdf8" stroke-width="14" stroke-dasharray="85 340" stroke-dashoffset="-115"/>
+              <circle cx="80" cy="80" r="54" fill="none" stroke="#4ade80" stroke-width="14" stroke-dasharray="75 340" stroke-dashoffset="-205"/>
+              <circle cx="80" cy="80" r="54" fill="none" stroke="#c084fc" stroke-width="14" stroke-dasharray="50 340" stroke-dashoffset="-285"/>
+              <text x="80" y="75" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="monospace">EXPENSES</text>
+              <text x="80" y="93" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="700" font-family="var(--font-display)">$1,420</text>
+            </svg>
+            <div class="expense-bars-container">
+              <div class="expense-bar-item">
+                <div class="bar-fill" style="height: 45%;"></div>
+                <span class="bar-label">MAY</span>
+              </div>
+              <div class="expense-bar-item">
+                <div class="bar-fill" style="height: 65%;"></div>
+                <span class="bar-label">JUN</span>
+              </div>
+              <div class="expense-bar-item">
+                <div class="bar-fill" style="height: 85%;"></div>
+                <span class="bar-label">JUL</span>
+              </div>
+              <div class="expense-bar-item active">
+                <div class="bar-fill" style="height: 68%;"></div>
+                <span class="bar-label">AUG</span>
+              </div>
+            </div>
+          </div>
+          <div class="expense-hud-bottom">
+            <div class="expense-hud-tx">
+              <span class="tx-icon">✦</span>
+              <span class="tx-desc">Server Infrastructure</span>
+              <span class="tx-val negative">-$42.00</span>
+            </div>
+            <div class="expense-budget-meter">
+              <div class="budget-meter-label">
+                <span>Budget: <strong>68%</strong></span>
+                <span class="budget-safe">Normal</span>
+              </div>
+              <div class="budget-bar-track">
+                <div class="budget-bar-progress" style="width: 68%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
     } else if (project.id === 'project-bottle-detection') {
       visualizerContent = `
         <div class="vector-visualizer visualizer-bottle-detection">
@@ -228,6 +290,26 @@ function renderProjects() {
           ${calloutHtml}
           <div class="project-tech">
             ${techBadges}
+          </div>
+          <div class="project-actions">
+            ${project.github ? `
+              <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="Check repository for ${project.title}">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
+                <span>Check Repo</span>
+              </a>
+            ` : ''}
+            ${project.demo && project.demo !== project.github ? `
+              <a href="${project.demo}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" aria-label="View live demo for ${project.title}">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                <span>Live Demo</span>
+              </a>
+            ` : ''}
           </div>
         </div>
       </div>
