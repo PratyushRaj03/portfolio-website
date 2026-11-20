@@ -15,7 +15,7 @@ export const projectsData = [
     calloutText: "Combines large-scale geospatial data visualization with real-time navigation directly on top of the live outlet intelligence map without separate screens.",
     tech: ["HTML", "CSS", "JavaScript", "Geospatial APIs", "Routing APIs", "Geolocation API"],
     github: "https://github.com/PratyushRaj03/navigation-system",
-    demo: "https://github.com/PratyushRaj03/navigation-system",
+    demo: "https://navigation-system3.vercel.app/",
     image: "assets/images/outlet_nav_preview.svg"
   },
   {
