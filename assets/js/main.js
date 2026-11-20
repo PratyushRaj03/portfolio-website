@@ -4,11 +4,13 @@ import { projectsData, skillsData, timelineData } from './data.js';
 import { initCursor } from './cursor.js';
 import { initCanvasBackground } from './canvas-bg.js';
 import { init3DTilts, initSingleTilt } from './tilt.js';
+import { initContextMenu } from './context-menu.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Global Cinematic Foundations
   initCanvasBackground();
   initCursor();
+  initContextMenu();
 
   // 2. Render Page Components from data layer
   renderProjects();
