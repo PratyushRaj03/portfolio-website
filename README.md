@@ -82,6 +82,7 @@ Or simply open `index.html` directly in your browser.
 - **Name:** Pratyush Raj Srivastava
 - **GitHub:** [@PratyushRaj03](https://github.com/PratyushRaj03)
 - **Email:** [pratyush.sceem@gmail.com](mailto:pratyush.sceem@gmail.com)
+- **Live:** [Click Here](https://pratyush-raj-srivastava-two.vercel.app/)
 
 ---
 
