@@ -562,31 +562,83 @@ function initContactForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Get form values
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+    // 1. Anti-Bot Honeypot Defense
+    const hp = document.getElementById('contact-hp');
+    if (hp && hp.value.trim() !== '') {
+      // Bot trapped in honeypot — simulate silent success without transmitting
+      status.className = 'form-status success';
+      status.textContent = '✅ Message sent! I will reach out to you shortly.';
+      status.style.opacity = '1';
+      form.reset();
+      return;
+    }
 
-    // Validate
-    if (!name || !email || !message) {
+    // 2. Client-Side Rate Limiting (30-second cooldown)
+    const LAST_SUBMIT_KEY = 'prs_contact_last_ts';
+    const now = Date.now();
+    const lastSubmit = parseInt(localStorage.getItem(LAST_SUBMIT_KEY) || '0', 10);
+    const COOLDOWN_MS = 30000;
+
+    if (now - lastSubmit < COOLDOWN_MS) {
+      const waitSeconds = Math.ceil((COOLDOWN_MS - (now - lastSubmit)) / 1000);
       status.className = 'form-status error';
-      status.textContent = 'Please fill in all fields.';
+      status.textContent = `⏳ Rate limit: Please wait ${waitSeconds}s before submitting again.`;
       status.style.opacity = '1';
       return;
     }
 
-    // Show sending state
+    // 3. Extract & Sanitize Form Values
+    const rawName = document.getElementById('name').value.trim();
+    const rawEmail = document.getElementById('email').value.trim();
+    const rawMessage = document.getElementById('message').value.trim();
+
+    // Strip non-printable / control characters
+    const name = rawName.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
+    const email = rawEmail.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
+    const message = rawMessage.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/g, '');
+
+    // 4. Input Length & Format Validation
+    if (!name || !email || !message) {
+      status.className = 'form-status error';
+      status.textContent = 'Please fill in all required fields.';
+      status.style.opacity = '1';
+      return;
+    }
+
+    if (name.length < 2 || name.length > 80) {
+      status.className = 'form-status error';
+      status.textContent = 'Name must be between 2 and 80 characters.';
+      status.style.opacity = '1';
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    if (!emailRegex.test(email) || email.length > 120) {
+      status.className = 'form-status error';
+      status.textContent = 'Please enter a valid email address.';
+      status.style.opacity = '1';
+      return;
+    }
+
+    if (message.length < 10 || message.length > 2000) {
+      status.className = 'form-status error';
+      status.textContent = 'Message must be between 10 and 2000 characters.';
+      status.style.opacity = '1';
+      return;
+    }
+
+    // 5. Secure Visual Sending State (safe textContent, no innerHTML injection)
     const submitBtn = form.querySelector('button[type="submit"]');
-    const origBtnText = submitBtn.innerHTML;
+    const origBtnText = submitBtn.textContent;
     submitBtn.disabled = true;
-    submitBtn.innerHTML = 'Sending...';
+    submitBtn.textContent = 'Sending...';
 
     status.className = 'form-status';
-    status.textContent = 'Encrypting transmission...';
+    status.textContent = 'Transmitting securely...';
     status.style.opacity = '1';
 
     try {
-      // Wait for EmailJS to load if needed
+      // Load EmailJS SDK dynamically if needed
       if (typeof emailjs === 'undefined') {
         await new Promise((resolve) => {
           const checkEmailJS = setInterval(() => {
@@ -599,28 +651,29 @@ function initContactForm() {
         });
       }
 
-      // Send email using EmailJS
-      const response = await emailjs.send(
-        'service_8kzl8m7',     // Replace with your Service ID
-        'template_8onrznk',    // Replace with your Template ID
+      // Transmit via EmailJS
+      await emailjs.send(
+        'service_8kzl8m7',
+        'template_8onrznk',
         {
           name: name,
           email: email,
           message: message,
-          to_email: 'pratyush.sceem@gmail.com' // Your Gmail
+          to_email: 'pratyush.sceem@gmail.com'
         }
       );
 
-      // Success
+      // Record successful submission timestamp for rate limiting
+      localStorage.setItem(LAST_SUBMIT_KEY, Date.now().toString());
+
+      // Success Display
       status.className = 'form-status success';
       status.textContent = '✅ Message sent! I will reach out to you shortly.';
       status.style.opacity = '1';
 
       form.reset();
-
-      // Reset button
       submitBtn.disabled = false;
-      submitBtn.innerHTML = origBtnText;
+      submitBtn.textContent = origBtnText;
 
       // Auto-hide success message after 6 seconds
       setTimeout(() => {
@@ -632,17 +685,15 @@ function initContactForm() {
       }, 6000);
 
     } catch (error) {
-      console.error('EmailJS error:', error);
+      console.error('Email transmission error:', error);
 
-      // Error handling
       status.className = 'form-status error';
-      status.textContent = '❌ Failed to send. Please try again or email me directly.';
+      status.textContent = '❌ Failed to send. Please try again or email pratyush.sceem@gmail.com directly.';
       status.style.opacity = '1';
 
       submitBtn.disabled = false;
-      submitBtn.innerHTML = origBtnText;
+      submitBtn.textContent = origBtnText;
 
-      // Auto-hide error after 6 seconds
       setTimeout(() => {
         status.style.opacity = '0';
       }, 6000);

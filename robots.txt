@@ -1,0 +1,7 @@
+# Robots.txt for Pratyush Raj Srivastava Portfolio
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://pratyush-raj-srivastava-two.vercel.app/sitemap.xml
+Sitemap: https://pratyushrajsrivastava.dev/sitemap.xml

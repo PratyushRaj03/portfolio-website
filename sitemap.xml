@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://pratyush-raj-srivastava-two.vercel.app/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://pratyush-raj-srivastava-two.vercel.app/assets/images/pratyush-raj-srivastava.webp</image:loc>
+      <image:title>Pratyush Raj Srivastava - AI/ML Engineer &amp; Software Developer</image:title>
+      <image:caption>Pratyush Raj Srivastava, specialized in Computer Vision, Deep Learning, and Full Stack Systems</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://pratyushrajsrivastava.dev/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>

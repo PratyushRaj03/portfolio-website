@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404: Page Not Found | Pratyush Raj Srivastava</title>
+  <meta name="description" content="The page or route you requested could not be located. Return to Pratyush Raj Srivastava's portfolio.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#0e0e0c">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      background: #0e0e0c;
+      color: #f5f0e8;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .error-container {
+      max-width: 580px;
+      z-index: 2;
+      background: rgba(20, 20, 16, 0.75);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 245, 220, 0.1);
+      border-radius: 20px;
+      padding: 48px 36px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(232, 160, 32, 0.08);
+      position: relative;
+    }
+
+    .error-code {
+      font-size: clamp(5rem, 15vw, 8rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 30%, #e8a020 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.04em;
+      filter: drop-shadow(0 0 20px rgba(232, 160, 32, 0.3));
+    }
+
+    .error-badge {
+      display: inline-block;
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: #e8a020;
+      background: rgba(232, 160, 32, 0.12);
+      border: 1px solid rgba(232, 160, 32, 0.25);
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .error-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #f5f0e8;
+    }
+
+    .error-desc {
+      font-size: 0.95rem;
+      color: #9e9a90;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .error-cta {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Ambient Grids & Orbs -->
+  <div class="grid-background"></div>
+  <div class="glow-orb glow-orb-purple" style="top: 20%; left: 10%;"></div>
+  <div class="glow-orb glow-orb-blue" style="bottom: 20%; right: 10%;"></div>
+
+  <div class="error-container">
+    <span class="error-badge">Navigation Alert // 404</span>
+    <div class="error-code">404</div>
+    <h1 class="error-title">Route Outside Mapped Bounds</h1>
+    <p class="error-desc">
+      The coordinates you requested do not exist in this network. The page may have been relocated or you might have followed an outdated link.
+    </p>
+    <div class="error-cta">
+      <a href="/" class="btn btn-primary">Return to Portfolio</a>
+      <a href="/#projects" class="btn btn-secondary">Explore Projects</a>
+    </div>
+  </div>
+</body>
+
+</html>
